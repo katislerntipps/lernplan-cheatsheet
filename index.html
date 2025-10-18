@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lernplan Cheatsheet - Evidenzbasiert für Schüler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .bg-slate-750 {
+            background-color: rgb(41, 52, 69);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white min-h-screen">
+    <div class="p-4 pb-20">
+        <!-- Header -->
+        <div class="max-w-4xl mx-auto mb-6">
+            <h1 class="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Dein Lernplan-Cheatsheet
+            </h1>
+            <p class="text-slate-400 text-sm">
+                Evidenzbasiert. Anti-Prokrastination.
+            </p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="max-w-4xl mx-auto mb-6 flex gap-2 overflow-x-auto pb-2">
+            <button onclick="showTab('plan')" id="tab-plan" class="tab-button flex items-center gap-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                🕐 Tagesplan
+            </button>
+            <button onclick="showTab('tipps')" id="tab-tipps" class="tab-button flex items-center gap-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all bg-slate-800 text-slate-400 hover:bg-slate-700">
+                ⚡ Anti-Prokrastination
+            </button>
+            <button onclick="showTab('habits')" id="tab-habits" class="tab-button flex items-center gap-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all bg-slate-800 text-slate-400 hover:bg-slate-700">
+                🎯 Daily Habits
+            </button>
+            <button onclick="showTab('apps')" id="tab-apps" class="tab-button flex items-center gap-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all bg-slate-800 text-slate-400 hover:bg-slate-700">
+                📱 Apps
+            </button>
+        </div>
+
+        <!-- Content Container -->
+        <div class="max-w-4xl mx-auto">
+            <!-- Tagesplan Tab -->
+            <div id="content-plan" class="tab-content">
+                <div class="bg-slate-800 rounded-xl p-6 mb-4">
+                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        🕐 Wann hast du Schulschluss?
+                    </h2>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button onclick="showPlan('13')" id="time-13" class="time-button py-3 rounded-lg font-bold transition-all bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg">
+                            13:00
+                        </button>
+                        <button onclick="showPlan('15')" id="time-15" class="time-button py-3 rounded-lg font-bold transition-all bg-slate-700 text-slate-400 hover:bg-slate-600">
+                            15:00
+                        </button>
+                        <button onclick="showPlan('16')" id="time-16" class="time-button py-3 rounded-lg font-bold transition-all bg-slate-700 text-slate-400 hover:bg-slate-600">
+                            16:00
+                        </button>
+                    </div>
+                </div>
+
+                <div id="plan-13" class="plan-content bg-slate-800 rounded-xl p-6">
+                    <h3 class="text-lg font-bold mb-4">13:00 Uhr Schulschluss</h3>
+                    <div class="space-y-2">
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">13:00-14:00</div>
+                            <div class="flex-1 font-medium">🍽️ Mittagessen + Erholung</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-red-900/40 to-orange-900/40 border border-red-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">14:00-14:50</div>
+                            <div class="flex-1 font-medium">🧠 Lernen: Schwerstes Fach</div>
+                            <div class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded font-bold">PRIMETIME</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">14:50-15:00</div>
+                            <div class="flex-1 font-medium">☕ Pause</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-red-900/40 to-orange-900/40 border border-red-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">15:00-15:50</div>
+                            <div class="flex-1 font-medium">📚 Lernen: Zweites Fach</div>
+                            <div class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded font-bold">PRIMETIME</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">15:50-16:00</div>
+                            <div class="flex-1 font-medium">☕ Pause</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-yellow-900/40 to-yellow-800/40 border border-yellow-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">16:00-16:45</div>
+                            <div class="flex-1 font-medium">✍️ Übungsaufgaben</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">16:45-17:15</div>
+                            <div class="flex-1 font-medium">🥤 Snack + Bewegung</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-blue-900/40 to-blue-800/40 border border-blue-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">17:15-18:00</div>
+                            <div class="flex-1 font-medium">📖 Leichte Aufgaben</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">18:00-19:00</div>
+                            <div class="flex-1 font-medium">🍽️ Abendessen + Familie</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-blue-900/40 to-blue-800/40 border border-blue-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">19:00-19:30</div>
+                            <div class="flex-1 font-medium">📝 Optional: Wiederholung</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-green-900/40 to-emerald-900/40 border border-green-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">19:30-21:00</div>
+                            <div class="flex-1 font-medium">🎮 Freizeit</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-blue-900/30 rounded-lg border border-blue-700/30">
+                        <p class="text-sm text-blue-300">
+                            <strong>💡 Pro-Tipp:</strong> Deine beste Gehirnleistung ist zwischen 14:00-18:00 Uhr. 
+                            Nutze diese Zeit für die schwersten Aufgaben!
+                        </p>
+                    </div>
+                </div>
+
+                <div id="plan-15" class="plan-content hidden bg-slate-800 rounded-xl p-6">
+                    <h3 class="text-lg font-bold mb-4">15:00 Uhr Schulschluss</h3>
+                    <div class="space-y-2">
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">15:00-15:45</div>
+                            <div class="flex-1 font-medium">🍽️ Mittagessen + Erholung</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-red-900/40 to-orange-900/40 border border-red-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">15:45-16:30</div>
+                            <div class="flex-1 font-medium">🧠 Lernen: Schwerstes Fach</div>
+                            <div class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded font-bold">PRIMETIME</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">16:30-16:40</div>
+                            <div class="flex-1 font-medium">☕ Pause</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-red-900/40 to-orange-900/40 border border-red-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">16:40-17:25</div>
+                            <div class="flex-1 font-medium">📚 Lernen: Zweites Fach</div>
+                            <div class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded font-bold">PRIMETIME</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">17:25-17:40</div>
+                            <div class="flex-1 font-medium">🥤 Snack + Bewegung</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-yellow-900/40 to-yellow-800/40 border border-yellow-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">17:40-18:20</div>
+                            <div class="flex-1 font-medium">✍️ Übungsaufgaben</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">18:20-19:15</div>
+                            <div class="flex-1 font-medium">🍽️ Abendessen</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-blue-900/40 to-blue-800/40 border border-blue-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">19:15-19:45</div>
+                            <div class="flex-1 font-medium">📖 Leichte Wiederholung</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-green-900/40 to-emerald-900/40 border border-green-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">19:45-21:00</div>
+                            <div class="flex-1 font-medium">🎮 Freizeit</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-blue-900/30 rounded-lg border border-blue-700/30">
+                        <p class="text-sm text-blue-300">
+                            <strong>💡 Pro-Tipp:</strong> Deine beste Gehirnleistung ist zwischen 14:00-18:00 Uhr. 
+                            Nutze diese Zeit für die schwersten Aufgaben!
+                        </p>
+                    </div>
+                </div>
+
+                <div id="plan-16" class="plan-content hidden bg-slate-800 rounded-xl p-6">
+                    <h3 class="text-lg font-bold mb-4">16:00 Uhr Schulschluss</h3>
+                    <div class="space-y-2">
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">16:00-16:45</div>
+                            <div class="flex-1 font-medium">🍽️ Mittagessen + Pause</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-red-900/40 to-orange-900/40 border border-red-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">16:45-17:30</div>
+                            <div class="flex-1 font-medium">🧠 Lernen: Prioritätsfach</div>
+                            <div class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded font-bold">PRIMETIME</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">17:30-17:40</div>
+                            <div class="flex-1 font-medium">☕ Pause</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-red-900/40 to-orange-900/40 border border-red-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">17:40-18:20</div>
+                            <div class="flex-1 font-medium">📚 Lernen: Zweites Fach</div>
+                            <div class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded font-bold">PRIMETIME</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">18:20-19:15</div>
+                            <div class="flex-1 font-medium">🍽️ Abendessen</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-yellow-900/40 to-yellow-800/40 border border-yellow-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">19:15-19:55</div>
+                            <div class="flex-1 font-medium">📖 Wiederholung</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-slate-700/50 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">19:55-20:05</div>
+                            <div class="flex-1 font-medium">☕ Pause</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-blue-900/40 to-blue-800/40 border border-blue-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">20:05-20:30</div>
+                            <div class="flex-1 font-medium">📝 Optional: Vorbereitung</div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gradient-to-r from-green-900/40 to-emerald-900/40 border border-green-700/30 flex items-center gap-3">
+                            <div class="font-mono text-sm text-slate-400 min-w-[90px]">20:30-21:00</div>
+                            <div class="flex-1 font-medium">🎮 Freizeit</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-blue-900/30 rounded-lg border border-blue-700/30">
+                        <p class="text-sm text-blue-300">
+                            <strong>💡 Pro-Tipp:</strong> Deine beste Gehirnleistung ist zwischen 14:00-18:00 Uhr. 
+                            Nutze diese Zeit für die schwersten Aufgaben!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anti-Prokrastination Tab -->
+            <div id="content-tipps" class="tab-content hidden">
+                <div class="bg-gradient-to-br from-red-900/40 to-orange-900/40 rounded-xl p-6 border border-red-700/30 mb-4">
+                    <h2 class="text-2xl font-bold mb-2">🚀 Sofort-Hacks</h2>
+                    <p class="text-slate-300 text-sm">
+                        Diese 6 Strategien sind wissenschaftlich bewiesen und wirken SOFORT.
+                    </p>
+                </div>
+
+                <div class="grid gap-4 md:grid-cols-2 mb-4">
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="text-3xl mb-2">⚡</div>
+                        <h3 class="font-bold text-lg mb-2">2-Minuten-Regel</h3>
+                        <p class="text-slate-400 text-sm">Starte jetzt für nur 2 Minuten. Der Rest folgt oft automatisch.</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="text-3xl mb-2">🎯</div>
+                        <h3 class="font-bold text-lg mb-2">Wenn-Dann-Plan</h3>
+                        <p class="text-slate-400 text-sm">WENN es 16 Uhr ist, DANN beginne ich mit Mathe.</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="text-3xl mb-2">📱</div>
+                        <h3 class="font-bold text-lg mb-2">Handy weg!</h3>
+                        <p class="text-slate-400 text-sm">In ein anderes Zimmer. Aus den Augen, aus dem Sinn.</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="text-3xl mb-2">🍅</div>
+                        <h3 class="font-bold text-lg mb-2">Pomodoro 25/5</h3>
+                        <p class="text-slate-400 text-sm">25 Min fokussiert arbeiten, 5 Min Pause. Wiederholen.</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="text-3xl mb-2">🎮</div>
+                        <h3 class="font-bold text-lg mb-2">Belohnung danach</h3>
+                        <p class="text-slate-400 text-sm">Gaming/Social Media NACH der Arbeit, nicht währenddessen.</p>
+                    </div>
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="text-3xl mb-2">✂️</div>
+                        <h3 class="font-bold text-lg mb-2">Aufgabe zerteilen</h3>
+                        <p class="text-slate-400 text-sm">Große Aufgabe = viele kleine Schritte. Einen nach dem anderen.</p>
+                    </div>
+                </div>
+
+                <div class="bg-purple-900/30 rounded-xl p-6 border border-purple-700/30">
+                    <h3 class="font-bold text-lg mb-3">⚡ Die Wissenschaft dahinter</h3>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li>• <strong>50-95%</strong> aller Schüler prokrastinieren regelmäßig</li>
+                        <li>• Diese Methoden reduzieren Prokrastination um bis zu <strong>61%</strong></li>
+                        <li>• Dein präfrontaler Kortex entwickelt sich noch bis Mitte 20</li>
+                        <li>• Situationsmodifikation (Handy weg) ist 3x effektiver als Willenskraft</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Daily Habits Tab -->
+            <div id="content-habits" class="tab-content hidden">
+                <div class="bg-gradient-to-br from-green-900/40 to-emerald-900/40 rounded-xl p-6 border border-green-700/30 mb-4">
+                    <h2 class="text-2xl font-bold mb-2">✅ Tägliche Gewohnheiten</h2>
+                    <p class="text-slate-300 text-sm">
+                        Diese 7 Habits führen zu besseren Noten UND weniger Stress. Track sie täglich!
+                    </p>
+                </div>
+
+                <div class="bg-slate-800 rounded-xl p-6 mb-4">
+                    <div class="space-y-3" id="habits-list">
+                        <!-- Habits will be populated by JavaScript -->
+                    </div>
+                    <div class="mt-6 p-4 bg-blue-900/30 rounded-lg border border-blue-700/30">
+                        <p class="text-sm text-blue-300">
+                            <strong>💪 Streak-Power:</strong> Je mehr Tage du durchhältst, desto leichter wird es. 
+                            Nach 21 Tagen wird es zur Gewohnheit!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 rounded-xl p-6">
+                    <h3 class="font-bold text-lg mb-3">🎯 Prioritäten-System</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center text-2xl">⭐</div>
+                            <div>
+                                <div class="font-bold">Hoch (A-Aufgaben)</div>
+                                <div class="text-sm text-slate-400">Deadline morgen, wichtige Prüfung, kritische Abgabe</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 rounded-lg bg-yellow-500/20 flex items-center justify-center text-2xl">●</div>
+                            <div>
+                                <div class="font-bold">Mittel (B-Aufgaben)</div>
+                                <div class="text-sm text-slate-400">Deadline diese Woche, Wiederholung, Übungsaufgaben</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center text-2xl">○</div>
+                            <div>
+                                <div class="font-bold">Niedrig (C-Aufgaben)</div>
+                                <div class="text-sm text-slate-400">Deadline nächste Woche+, optional, nice-to-have</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apps Tab -->
+            <div id="content-apps" class="tab-content hidden">
+                <div class="bg-gradient-to-br from-purple-900/40 to-pink-900/40 rounded-xl p-6 border border-purple-700/30 mb-4">
+                    <h2 class="text-2xl font-bold mb-2">📱 Die besten Apps</h2>
+                    <p class="text-slate-300 text-sm">
+                        Diese Tools wurden von 1000+ Schülern getestet. Sie funktionieren wirklich.
+                    </p>
+                </div>
+
+                <div class="grid gap-4 mb-4">
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-3xl">🌳</span>
+                                <h3 class="font-bold text-xl">Forest</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-bold">Kostenlos (Android)</span>
+                        </div>
+                        <p class="text-slate-400 text-sm">Baum wächst während du lernst</p>
+                    </div>
+
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-3xl">📝</span>
+                                <h3 class="font-bold text-xl">Notion</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-bold">Kostenlos (Studenten)</span>
+                        </div>
+                        <p class="text-slate-400 text-sm">All-in-One Organisationstool</p>
+                    </div>
+
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-3xl">🎮</span>
+                                <h3 class="font-bold text-xl">Habitica</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-bold">Kostenlos</span>
+                        </div>
+                        <p class="text-slate-400 text-sm">Aufgaben als RPG-Quest</p>
+                    </div>
+
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-3xl">⚡</span>
+                                <h3 class="font-bold text-xl">Astra AI</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-bold">Kostenlos</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-3">Bester KI-Assistent für Hausaufgaben & Prüfungsvorbereitung - erklärt Konzepte, hilft bei Aufgaben</p>
+                        <a href="https://astra-ai.de/" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-bold rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all">
+                            🎁 Mehr erfahren
+                        </a>
+                    </div>
+
+                    <div class="bg-slate-800 rounded-xl p-5 border border-slate-700">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-3xl">🔍</span>
+                                <h3 class="font-bold text-xl">Perplexity AI</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-bold">Kostenlos</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-3">Das beste Recherche KI Tool inklusive dem neuen KI Browser</p>
+                        <a href="https://pplx.ai/perplexity21144" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-bold rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all">
+                            🎁 1 Monat Gratis Pro Version
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 rounded-xl p-6 mb-4">
+                    <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                        ☕ Kostenlose Vollausstattung (0€)
+                    </h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-400">✓</span>
+                            <span><strong>Notion</strong> - Hauptorganisation & Notizen</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-400">✓</span>
+                            <span><strong>Google Calendar</strong> - Zeitplanung</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-400">✓</span>
+                            <span><strong>Forest (Android)</strong> - Fokus-Sessions</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-400">✓</span>
+                            <span><strong>Habitica</strong> - Gamification & Motivation</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-400">✓</span>
+                            <span><strong>Astra AI</strong> - KI-Lernassistent</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-400">✓</span>
+                            <span><strong>Perplexity AI</strong> - KI-Recherche Tool</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-900/40 to-blue-900/40 rounded-xl p-6 border border-purple-700/30 mb-4">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                        <span class="text-2xl">🤖</span>
+                        KI-Power für dein Lernen
+                    </h3>
+                    <div class="space-y-3 text-sm text-slate-300">
+                        <div class="p-3 bg-slate-800/50 rounded-lg">
+                            <div class="font-bold mb-1">🔍 Perplexity AI - Recherche (Kostenlos)</div>
+                            <div class="text-slate-400">Besser als Google! Beantwortet komplexe Fragen mit Quellen. Perfekt für Facharbeiten und Referate.</div>
+                        </div>
+                        <div class="p-3 bg-slate-800/50 rounded-lg border border-yellow-500/30">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-2xl">⚡</span>
+                                <span class="font-bold">Astra AI - Premium Lernbegleiter (Kostenlos)</span>
+                            </div>
+                            <div class="text-slate-400">Der beste KI-Assistent für Hausaufgaben & Prüfungsvorbereitung. Erklärt schwierige Konzepte Schritt für Schritt.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-900/30 rounded-xl p-6 border border-blue-700/30">
+                    <h3 class="font-bold mb-3">⚠️ Digital Detox Regeln</h3>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li>• Handy während Lernzeit in ANDEREM Zimmer</li>
+                        <li>• Social Media max. 30 Min/Tag während Schulzeit</li>
+                        <li>• Benachrichtigungen AUS außer für wichtige Apps</li>
+                        <li>• Graustufen-Modus aktivieren = Apps weniger attraktiv</li>
+                        <li>• Nach 23 Minuten Ablenkung brauchst du wieder 23 Min Fokus!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="max-w-4xl mx-auto mt-8 p-4 bg-slate-800/50 rounded-xl text-center text-sm text-slate-400">
+            Basierend auf wissenschaftlichen Studien mit 10.000+ Schülern weltweit. 
+            <br>
+            <strong class="text-slate-300">Dein Erfolg = Deine Gewohnheiten × Zeit</strong>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function showTab(tabName) {
+            // Hide all content
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Show selected content
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-purple-500', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-slate-400');
+            });
+            document.getElementById('tab-' + tabName).classList.remove('bg-slate-800', 'text-slate-400');
+            document.getElementById('tab-' + tabName).classList.add('bg-gradient-to-r', 'from-blue-500', 'to-purple-500', 'text-white');
+        }
+
+        // Plan switching
+        function showPlan(time) {
+            // Hide all plans
+            document.querySelectorAll('.plan-content').forEach(el => el.classList.add('hidden'));
+            // Show selected plan
+            document.getElementById('plan-' + time).classList.remove('hidden');
+            
+            // Update time buttons
+            document.querySelectorAll('.time-button').forEach(btn => {
+                btn.classList.remove('bg-gradient-to-r', 'from-blue-500', 'to-blue-600', 'shadow-lg');
+                btn.classList.add('bg-slate-700', 'text-slate-400');
+            });
+            const selectedBtn = document.getElementById('time-' + time);
+            selectedBtn.classList.remove('bg-slate-700', 'text-slate-400');
+            
+            if (time === '13') {
+                selectedBtn.classList.add('bg-gradient-to-r', 'from-blue-500', 'to-blue-600', 'text-white', 'shadow-lg');
+            } else if (time === '15') {
+                selectedBtn.classList.add('bg-gradient-to-r', 'from-purple-500', 'to-purple-600', 'text-white', 'shadow-lg');
+            } else {
+                selectedBtn.classList.add('bg-gradient-to-r', 'from-teal-500', 'to-teal-600', 'text-white', 'shadow-lg');
+            }
+        }
+
+        // Habits
+        const habits = [
+            '30 Minuten lesen',
+            '8 Gläser Wasser trinken',
+            'Bewegung/Sport (20 Min)',
+            'Klassennotizen wiederholen',
+            'Hausaufgaben erledigen',
+            'Handy < 2 Stunden',
+            '8-10 Stunden Schlaf'
+        ];
+
+        function loadHabits() {
+            const habitsList = document.getElementById('habits-list');
+            const savedHabits = JSON.parse(localStorage.getItem('habits') || '{}');
+            
+            habitsList.innerHTML = habits.map((habit, index) => `
+                <label class="flex items-center gap-3 p-4 rounded-lg bg-slate-700/50 hover:bg-slate-700 cursor-pointer transition-all">
+                    <input 
+                        type="checkbox" 
+                        id="habit-${index}"
+                        ${savedHabits[habit] ? 'checked' : ''}
+                        onchange="toggleHabit('${habit}')"
+                        class="w-5 h-5 rounded border-2 border-slate-600 bg-slate-900 cursor-pointer"
+                    />
+                    <span class="flex-1 font-medium ${savedHabits[habit] ? 'line-through text-slate-500' : ''}" id="habit-text-${index}">
+                        ${habit}
+                    </span>
+                    ${savedHabits[habit] ? '<span class="text-green-400">✓</span>' : ''}
+                </label>
+            `).join('');
+        }
+
+        function toggleHabit(habit) {
+            const savedHabits = JSON.parse(localStorage.getItem('habits') || '{}');
+            savedHabits[habit] = !savedHabits[habit];
+            localStorage.setItem('habits', JSON.stringify(savedHabits));
+            loadHabits();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHabits();
+        });
+    </script>
+</body>
+</html>
